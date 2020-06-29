@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  clientId: 'pcbfnmnqghsmctpi2do1wtcn419pfj',
+  clientSecret: 'aiy0aacneouo8e79i9jvbsas10fo57',
+  apiUrl: 'https://api.twitch.tv/helix',
 };
 
 /*
