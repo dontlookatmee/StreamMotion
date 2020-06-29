@@ -33,7 +33,6 @@ export class TwitchService implements OnInit {
       )
       .pipe(
         tap((token: Token) => {
-          console.log('tap');
           localStorage.setItem('tokenId', JSON.stringify(token.access_token));
           localStorage.setItem('expiresAt', JSON.stringify(token.expires_in));
         })
@@ -43,6 +42,10 @@ export class TwitchService implements OnInit {
   getToken() {
     const token = localStorage.getItem('tokenId');
     return JSON.parse(token);
+  }
+
+  getStreamers() {
+    return this.http.get('https://api.twitch.tv/helix/streams');
   }
 
   ngOnInit() {}

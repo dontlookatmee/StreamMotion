@@ -18,15 +18,15 @@ export class TwitchInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log('intercep');
-    console.log(this.tw.getToken());
-    const newReq = request.clone({
-      url: request.url,
-      setHeaders: {
-        'Client-ID': environment.clientId,
-        Authorization: `Bearer ${this.tw.getToken()}`,
-      },
-    });
-    return next.handle(newReq);
+    if (request.url !== 'https://id.twitch.tv/oauth2/token') {
+      const newReq = request.clone({
+        setHeaders: {
+          'Client-ID': environment.clientId,
+          Authorization: `Bearer ${this.tw.getToken()}`,
+        },
+      });
+      return next.handle(newReq);
+    }
+    return next.handle(request);
   }
 }
