@@ -5,11 +5,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TwitchInterceptor } from './interceptors/twitch.interceptor';
-import { TwitchService } from './services/twitch/twitch.service';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, CoreModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
