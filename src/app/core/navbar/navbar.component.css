@@ -3,6 +3,7 @@
 }
 .navbar-brand {
   color: #d79922;
+  font-weight: bold;
 }
 .navbar-menu {
   justify-content: flex-end;
