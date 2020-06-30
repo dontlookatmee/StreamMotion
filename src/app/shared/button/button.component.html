@@ -1,0 +1,13 @@
+<button
+  type="button"
+  [ngClass]="{
+    primary: type === 'primary',
+    danger: type === 'danger',
+    'primary-outline': type === 'primary-outline',
+    'danger-outline': type === 'danger-outline',
+    btn: true
+  }"
+  [routerLink]="link"
+>
+  {{ text }}
+</button>

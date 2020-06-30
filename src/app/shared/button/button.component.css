@@ -1,0 +1,29 @@
+.primary {
+  background-color: #ffcb9a;
+}
+.primary:hover {
+  background-color: #d9b08c;
+}
+
+.danger {
+  background-color: #f13c20;
+}
+.dager:hover {
+  background-color: #d1351c;
+}
+
+.primary-outline {
+  background-color: transparent;
+  border: 1px solid #ffcb9a;
+}
+.primary-outline:hover {
+  background-color: #d9b08c;
+}
+
+.danger-outline {
+  background-color: transparent;
+  border: 1px solid #f13c20;
+}
+.danger-outline:hover {
+  background-color: #d1351c;
+}
