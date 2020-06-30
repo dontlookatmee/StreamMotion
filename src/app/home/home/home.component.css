@@ -25,24 +25,54 @@
 
 /* Top Streamers */
 
-.top-streams {
+.about-stream {
   margin-top: 100px;
 }
-.top-streams .container {
+.about-stream .container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.top-streams .container .top-streams-header {
+.about-stream .container .about-streams-header {
+  display: flex;
+  flex-direction: column;
   flex-basis: 30%;
   color: #d1e8e2;
   font-weight: bold;
 }
+.about-stream .container .about-streams-header h2 span {
+  color: #ffcb9a;
+}
 
-.top-streams .container .iframe-container {
+.about-stream .container .iframe-container {
   flex-basis: 70%;
 }
-.top-streams .container .iframe-container iframe {
+.about-stream .container .iframe-container iframe {
   width: 100%;
   height: 550px;
+}
+
+.preferences,
+.support,
+.chat {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 20px 0 0;
+}
+.preferences p,
+.support p,
+.chat p {
+  font-weight: normal;
+  flex-basis: 85%;
+  margin: 0;
+}
+.preferences i,
+.support i,
+.chat i {
+  color: #ffcb9a;
+  font-size: 1.8rem;
+  align-self: center;
+  flex-basis: 15%;
 }
