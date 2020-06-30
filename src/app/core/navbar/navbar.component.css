@@ -15,11 +15,14 @@
 .navbar-light .navbar-nav .show > .nav-link {
   color: #ffcb9a;
 }
+.navbar-light .navbar-nav .nav-link {
+  color: #212529;
+}
 .signin,
 .register {
   margin-left: 15px;
   background-color: #ffcb9a;
-  color: #000;
+  color: #212529;
   border-radius: 4px;
 }
 .signin:hover,
