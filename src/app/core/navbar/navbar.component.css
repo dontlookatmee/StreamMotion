@@ -1,36 +1,40 @@
 .navbar {
-  background-color: #4056a1;
+  background-color: #2c3531;
   padding: 0.8rem 1rem;
 }
 .navbar-brand {
-  color: #d79922;
+  color: #ffcb9a;
   font-weight: bold;
 }
 .navbar-menu {
   justify-content: flex-end;
 }
-.navbar-light .navbar-nav .nav-link {
-  color: #fff;
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show > .nav-link {
+  color: #ffcb9a;
 }
 .signin,
 .register {
   margin-left: 15px;
-  background-color: #d79922;
+  background-color: #ffcb9a;
+  color: #000;
   border-radius: 4px;
 }
 .signin:hover,
 .register:hover {
-  background-color: #b37e1c;
+  background-color: #d9b08c;
 }
 #home:hover,
 .navbar-brand:hover {
-  color: #d79922;
+  color: #d9b08c;
 }
 .active {
-  color: #d79922;
+  color: #d9b08c;
 }
 
 .navbar-light .navbar-brand:focus,
 .navbar-light .navbar-brand:hover {
-  color: #d79922;
+  color: #d9b08c;
 }
