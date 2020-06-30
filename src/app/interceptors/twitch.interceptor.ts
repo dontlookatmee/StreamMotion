@@ -18,7 +18,7 @@ export class TwitchInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (request.url !== 'https://id.twitch.tv/oauth2/token') {
+    if (!request.url.includes('token' || 'oauth2')) {
       const newReq = request.clone({
         setHeaders: {
           'Client-ID': environment.clientId,
