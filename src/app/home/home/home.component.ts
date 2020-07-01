@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   TwitchService,
-  Streams,
+  StreamsMetadata,
   Stream,
 } from 'src/app/services/twitch/twitch.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -12,13 +12,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  streams: Streams;
+  streams: StreamsMetadata;
   streamer: SafeResourceUrl;
 
   constructor(private tw: TwitchService, private sanitized: DomSanitizer) {}
 
   ngOnInit(): void {
-    this.tw.getStreamers().subscribe((streams: Streams) => {
+    this.tw.getStreamers().subscribe((streams: StreamsMetadata) => {
       this.streams = streams;
       this.streamer = this.getRandomStreamer(streams.data);
     });

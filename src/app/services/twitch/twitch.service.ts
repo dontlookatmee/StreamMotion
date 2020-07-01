@@ -23,7 +23,7 @@ export interface Stream {
   view_count: number;
 }
 
-export interface Streams {
+export interface StreamsMetadata {
   data: Stream[];
 }
 
@@ -62,7 +62,9 @@ export class TwitchService implements OnInit {
   }
 
   getStreamers() {
-    return this.http.get<Streams>('https://api.twitch.tv/helix/streams');
+    return this.http.get<StreamsMetadata>(
+      'https://api.twitch.tv/helix/streams'
+    );
   }
 
   ngOnInit() {}
