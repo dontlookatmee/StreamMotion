@@ -40,7 +40,8 @@
   color: #d1e8e2;
   font-weight: bold;
 }
-.about-stream .container .about-streams-header h2 span {
+.about-stream .container .about-streams-header h2 span,
+.about span {
   color: #ffcb9a;
 }
 
@@ -79,7 +80,7 @@
 
 /* Sponsors */
 .sponsors {
-  background-color: #e6e6e6;
+  background-color: transparent;
   width: 100%;
   height: 120px;
 }
