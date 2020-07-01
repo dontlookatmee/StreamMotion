@@ -41,3 +41,16 @@
 .navbar-light .navbar-brand:hover {
   color: #d9b08c;
 }
+
+@media screen and (max-width: 991.98px) {
+  .container {
+    max-width: 98%;
+    margin: 0 auto;
+  }
+  .navbar-nav {
+    text-align: center;
+  }
+  .navbar-nav a {
+    margin-bottom: 10px;
+  }
+}

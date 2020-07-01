@@ -65,3 +65,13 @@ hr {
 .copyrights p span {
   color: #ffcb9a;
 }
+@media screen and (max-width: 576px) {
+  .navlinks ul {
+    flex-direction: column;
+    align-content: center;
+  }
+  .navlinks ul li {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}

@@ -12,6 +12,14 @@
   color: #d1e8e2;
 }
 .header img {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 500px;
+}
+
+@media screen and (max-width: 576px) {
+  .header img {
+    height: 300px;
+    margin-top: 50px;
+  }
 }
