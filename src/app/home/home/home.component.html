@@ -36,8 +36,9 @@
       </section>
       <section class="iframe-container">
         <iframe
+          *ngIf="streams?.data.length > 0"
           class="embed-responsive-item"
-          src="https://player.twitch.tv/?channel=psherotv&muted=true&parent=localhost"
+          [src]="streamer"
           allowfullscreen
         >
         </iframe>

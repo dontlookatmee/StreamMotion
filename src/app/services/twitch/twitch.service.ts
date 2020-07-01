@@ -10,6 +10,23 @@ export interface Token {
   token_type: string;
 }
 
+export interface Stream {
+  game_id: string;
+  id: string;
+  lagunage: string;
+  started_at: string;
+  thumbnail_url: string;
+  title: string;
+  type: string;
+  user_id: string;
+  user_name: string;
+  view_count: number;
+}
+
+export interface Streams {
+  data: Stream[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -45,7 +62,7 @@ export class TwitchService implements OnInit {
   }
 
   getStreamers() {
-    return this.http.get('https://api.twitch.tv/helix/streams');
+    return this.http.get<Streams>('https://api.twitch.tv/helix/streams');
   }
 
   ngOnInit() {}

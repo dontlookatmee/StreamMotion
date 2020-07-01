@@ -9,6 +9,5 @@ import { TwitchService } from './services/twitch/twitch.service';
 export class AppComponent {
   constructor(private tw: TwitchService) {
     this.tw.storeToken().subscribe();
-    this.tw.getStreamers().subscribe((x) => console.log(x));
   }
 }
