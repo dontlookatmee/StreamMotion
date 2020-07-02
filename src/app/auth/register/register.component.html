@@ -11,7 +11,14 @@
           </div>
 
           <!--	<form> -->
-          <form [formGroup]="registerForm">
+          <form [formGroup]="registerForm" (ngSubmit)="handleEmailSignup()">
+            <div>
+              <app-input
+                [control]="registerForm.controls.displayName"
+                placeholder="Username"
+                name="username"
+              ></app-input>
+            </div>
             <div>
               <app-input
                 [control]="registerForm.controls.email"
@@ -22,11 +29,28 @@
 
             <div>
               <app-input
-                [control]="registerForm.controls.password"
+                [control]="registerForm.controls.passwords.get('password')"
                 placeholder="Password"
                 type="password"
                 name="password"
               ></app-input>
+            </div>
+            <div>
+              <app-input
+                [control]="
+                  registerForm.controls.passwords.get('passwordConfirmation')
+                "
+                placeholder="Password Confirmation"
+                type="password"
+                name="password confirmation"
+              ></app-input>
+            </div>
+            <div
+              style="color: 'red'; margin-bottom: '15px';"
+              *ngIf="registerForm.get('passwords').errors?.passwordMatch"
+              class="validation"
+            >
+              Your passwords don't match.
             </div>
             <div class="auth-links-container">
               <p class="auth-fp-link">Already registered ?</p>

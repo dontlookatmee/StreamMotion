@@ -42,10 +42,7 @@ export class AuthService {
     );
   }
   async handleEmailSignup(form: FormGroup) {
-    console.log('auth service outer signup fired');
-
     if (form.valid && form.get('passwords').valid) {
-      console.log('auth service inner signup fired');
       const email = form.get('email').value;
       const password = form.get('passwords.password').value;
       const displayName = form.get('displayName').value;
@@ -60,7 +57,6 @@ export class AuthService {
             displayName,
             photoURL: '',
           };
-          console.log('added to database');
           this.updateUserData(data, 'email');
         });
     }
@@ -76,26 +72,26 @@ export class AuthService {
         data.email,
         data.password
       );
-      return this.updateUserData(credentials.user, 'credential');
+      return this.updateUserData(credentials.user);
     }
   }
 
   async handleGoogleSingin() {
     const provider = new auth.GoogleAuthProvider();
     const credentials = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credentials.user, 'credential');
+    return this.updateUserData(credentials.user);
   }
 
   async handleFacebookSignin() {
     const provider = new auth.FacebookAuthProvider();
     const credentials = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credentials.user, 'credential');
+    return this.updateUserData(credentials.user);
   }
 
   async handleTwitterSignin() {
     const provider = new auth.TwitterAuthProvider();
     const credentials = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credentials.user, 'credential');
+    return this.updateUserData(credentials.user);
   }
 
   async signOut() {
@@ -105,7 +101,7 @@ export class AuthService {
 
   updateUserData(
     { uid, email, displayName, photoURL, password }: User,
-    type: string
+    type?: string
   ) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${uid}`
@@ -118,7 +114,9 @@ export class AuthService {
       photoURL,
     };
 
-    type === 'credential' ? data : (data['password'] = password);
+    if (type === 'email') {
+      data['password'] = password;
+    }
 
     return userRef.set(data, { merge: true });
   }
