@@ -15,11 +15,11 @@
   font-size: 1.2rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: #ffcb9a;
+  color: #fff;
 }
 .navlinks ul a:hover {
   cursor: pointer;
-  color: #d9b08c;
+  color: #ffcb9a;
 }
 
 hr {
@@ -44,12 +44,12 @@ hr {
   margin: 50px auto;
 }
 .social i {
-  color: #ffcb9a;
+  color: #d9b08c;
   font-size: 1.5rem;
 }
 .social i:hover {
   cursor: pointer;
-  color: #d9b08c;
+  color: #ffcb9a;
 }
 .copyrights {
   padding: 10px 0;
