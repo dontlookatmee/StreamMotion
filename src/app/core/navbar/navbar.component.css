@@ -46,6 +46,10 @@
 .navbar-light .navbar-brand:hover {
   color: #d9b08c;
 }
+button {
+  background-color: transparent;
+  border: none;
+}
 
 @media screen and (max-width: 991.98px) {
   .container {
