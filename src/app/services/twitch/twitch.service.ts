@@ -1,8 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { tap, switchMap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 export interface Token {
   access_token: string;
@@ -50,8 +49,10 @@ export class TwitchService implements OnInit {
       )
       .pipe(
         tap((token: Token) => {
-          localStorage.setItem('tokenId', JSON.stringify(token.access_token));
-          localStorage.setItem('expiresAt', JSON.stringify(token.expires_in));
+          if (this.getToken() !== token.access_token) {
+            localStorage.setItem('tokenId', JSON.stringify(token.access_token));
+            localStorage.setItem('expiresAt', JSON.stringify(token.expires_in));
+          }
         })
       );
   }
