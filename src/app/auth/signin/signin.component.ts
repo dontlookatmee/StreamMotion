@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -16,21 +17,33 @@ export class SigninComponent implements OnInit {
     ],
   });
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   handleEmailSingin() {
-    this.auth.handleEmailSingin(this.registerForm);
+    this.auth.handleEmailSingin(this.registerForm).then((x) => {
+      this.router.navigate(['./']);
+    });
   }
 
   handleFacebookSignin() {
-    this.auth.handleFacebookSignin();
+    this.auth.handleFacebookSignin().then((x) => {
+      this.router.navigate(['/']);
+    });
   }
   handleGoogleSingin() {
-    this.auth.handleGoogleSingin();
+    this.auth.handleGoogleSingin().then((x) => {
+      this.router.navigate(['/']);
+    });
   }
   handleTwitterSignin() {
-    this.auth.handleTwitterSignin();
+    this.auth.handleTwitterSignin().then((x) => {
+      this.router.navigate(['/']);
+    });
   }
 }

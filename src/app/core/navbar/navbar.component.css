@@ -19,7 +19,8 @@
   color: #ffcb9a;
 }
 .signin,
-.register {
+.register,
+.logout {
   margin-left: 15px;
   background-color: #ffcb9a;
   color: #212529 !important;
