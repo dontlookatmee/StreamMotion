@@ -79,35 +79,20 @@ select {
   padding: 8px 0px 8px 0px;
   margin: 0 auto;
 }
-input[type="text"] {
-  width: 100%;
-  padding: 12px 15px;
-  border: none;
-  background-color: #eee;
-  margin-bottom: 10px;
-  letter-spacing: 0.2px;
-}
-input[type="password"] {
-  width: 100%;
-  padding: 12px 15px;
-  border: none;
-  background-color: #eee;
-  margin-bottom: 10px;
-  letter-spacing: 0.2px;
-}
-input[type="submit"] {
+
+button[type="submit"] {
   width: 60%;
   padding: 10px 0 10px 0;
   border: none;
   background-color: #ffcb9a;
   border-radius: 3pc;
-  color: #212529;
+  color: #2e2f3e;
   margin: 0 auto;
   display: block;
   font-weight: 700;
   letter-spacing: 1px;
 }
-input[type="submit"]:hover {
+button[type="submit"]:hover:enabled {
   background-color: #d9b08c;
 }
 .auth-form-label {

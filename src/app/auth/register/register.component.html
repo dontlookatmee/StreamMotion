@@ -7,35 +7,35 @@
         </div>
         <div class="auth-form">
           <div class="auth-form-label">
-            <p class="primary-label">Sign in</p>
+            <p class="primary-label">Sign Up</p>
           </div>
-          <div class="social-container">
-            <a href="#" class="social"
-              ><i class="fa fa-facebook" aria-hidden="true"></i
-            ></a>
-            <a href="#" class="social"
-              ><i class="fa fa-google" aria-hidden="true"></i
-            ></a>
-            <a href="#" class="social"
-              ><i class="fa fa-twitter" aria-hidden="true"></i
-            ></a>
-          </div>
+
           <!--	<form> -->
           <form [formGroup]="registerForm">
             <div>
-              <input type="text" name="" placeholder="Email" />
+              <app-input
+                [control]="registerForm.controls.email"
+                placeholder="Email"
+                name="email"
+              ></app-input>
             </div>
 
             <div>
-              <input type="password" name="" placeholder="Password" />
+              <app-input
+                [control]="registerForm.controls.password"
+                placeholder="Password"
+                type="password"
+                name="password"
+              ></app-input>
             </div>
-
             <div class="auth-links-container">
-              <p class="auth-fp-link">Forgot password?</p>
+              <p class="auth-fp-link">Already registered ?</p>
             </div>
 
             <div>
-              <input type="submit" name="" value="SIGN IN" />
+              <button type="submit" [disabled]="registerForm.invalid">
+                Sign Up
+              </button>
             </div>
           </form>
           <!--	</form> -->
