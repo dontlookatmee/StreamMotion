@@ -84,7 +84,7 @@ button[type="submit"] {
   width: 60%;
   padding: 10px 0 10px 0;
   border: none;
-  background-color: #ffcb9a;
+  background-color: #d9b08c;
   border-radius: 3pc;
   color: #2e2f3e;
   margin: 0 auto;
@@ -93,7 +93,7 @@ button[type="submit"] {
   letter-spacing: 1px;
 }
 button[type="submit"]:hover:enabled {
-  background-color: #d9b08c;
+  background-color: #ffcb9a;
 }
 .auth-form-label {
   margin-bottom: 20px;
@@ -112,6 +112,10 @@ button[type="submit"]:hover:enabled {
   margin: 0 5px;
   height: 40px;
   width: 40px;
+}
+.social-container a:hover {
+  cursor: pointer;
+  background-color: #ffcb9a;
 }
 .social-container {
   margin: 20px 0;

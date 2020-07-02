@@ -47,4 +47,6 @@
 #copyright-logos {
   text-align: center;
   color: rgba(255, 255, 255, 0.459);
+  margin: 0;
+  padding-bottom: 10px;
 }
