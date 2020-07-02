@@ -1,0 +1,46 @@
+<div class="register-container">
+  <div class="container">
+    <div class="auth-wrapper">
+      <div class="auth-form-wrapper">
+        <div class="auth-media">
+          <img src="../../../assets/illustrations/form.svg" />
+        </div>
+        <div class="auth-form">
+          <div class="auth-form-label">
+            <p class="primary-label">Sign in</p>
+          </div>
+          <div class="social-container">
+            <a href="#" class="social"
+              ><i class="fa fa-facebook" aria-hidden="true"></i
+            ></a>
+            <a href="#" class="social"
+              ><i class="fa fa-google" aria-hidden="true"></i
+            ></a>
+            <a href="#" class="social"
+              ><i class="fa fa-twitter" aria-hidden="true"></i
+            ></a>
+          </div>
+          <!--	<form> -->
+          <form [formGroup]="registerForm">
+            <div>
+              <input type="text" name="" placeholder="Email" />
+            </div>
+
+            <div>
+              <input type="password" name="" placeholder="Password" />
+            </div>
+
+            <div class="auth-links-container">
+              <p class="auth-fp-link">Forgot password?</p>
+            </div>
+
+            <div>
+              <input type="submit" name="" value="SIGN IN" />
+            </div>
+          </form>
+          <!--	</form> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
