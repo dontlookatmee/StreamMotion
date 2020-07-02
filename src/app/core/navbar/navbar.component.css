@@ -3,7 +3,7 @@
   padding: 0.8rem 1rem;
 }
 .navbar-brand {
-  color: #ffcb9a;
+  color: #d9b08c;
   font-weight: bold;
 }
 .navbar-menu {
@@ -13,46 +13,41 @@
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show > .nav-link {
-  color: #ffcb9a;
+  color: #fff;
 }
 .navbar-light .navbar-nav .nav-link {
-  color: #ffcb9a;
+  color: #fff;
 }
 .signin,
 .register,
 .logout {
   margin-left: 15px;
-  background-color: #ffcb9a;
+  background-color: #d9b08c;
   color: #212529 !important;
   border-radius: 4px;
 }
 
 .signin:hover,
-.register:hover {
-  background-color: #d9b08c;
+.register:hover,
+.logout:hover {
+  background-color: #ffcb9a;
 }
-#home:hover,
+
 .navbar-brand:hover {
-  color: #d9b08c;
+  color: #ffcb9a;
 }
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #ffcb9a;
+}
+
 .active {
-  color: #d9b08c;
+  color: #ffcb9a !important;
 }
 .active-others {
-  background-color: #d9b08c !important;
   color: #212529 !important;
 }
 
-.navbar-light .navbar-brand:focus,
-.navbar-light .navbar-brand:hover {
-  color: #d9b08c;
-}
-button {
-  background-color: transparent;
-  border: none;
-}
-
-@media screen and (max-width: 991.98px) {
+/* @media screen and (max-width: 991.98px) {
   .container {
     max-width: 98%;
     margin: 0 auto;
@@ -63,4 +58,4 @@ button {
   .navbar-nav a {
     margin-bottom: 10px;
   }
-}
+} */

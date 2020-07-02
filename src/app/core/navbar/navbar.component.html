@@ -17,54 +17,70 @@
     id="navbarNavAltMarkup"
   >
     <div class="navbar-nav">
-      <button
+      <a
         id="home"
         class="nav-item nav-link home"
+        routerLink="/"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
       >
         Home
-      </button>
-      <button class="nav-item nav-link" routerLinkActive="active">
+      </a>
+      <a
+        routerLink="streams"
+        class="nav-item nav-link"
+        routerLinkActive="active"
+      >
+        Streams
+      </a>
+      <a
+        routerLink="publications"
+        class="nav-item nav-link"
+        routerLinkActive="active"
+      >
         Publications
-      </button>
-      <button class="nav-item nav-link" routerLinkActive="active">
+      </a>
+      <a
+        routerLink="discussions"
+        class="nav-item nav-link"
+        routerLinkActive="active"
+      >
         Discussions
-      </button>
-      <button class="nav-item nav-link" routerLinkActive="active">
+      </a>
+      <a routerLink="about" class="nav-item nav-link" routerLinkActive="active">
         About
-      </button>
-      <button (click)="handleSignout()" class="nav-item nav-link logout">
+      </a>
+      <a (click)="handleSignout()" class="nav-item nav-link logout">
         Sign Out
-      </button>
+      </a>
     </div>
   </div>
   <ng-template #login>
     <div class="collapse navbar-collapse navbar-menu" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <button
+        <a
           id="home"
-          class="nav-item nav-link home"
-          routerLink="./"
+          class="nav-item nav-link"
+          routerLink="/"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
           Home
-        </button>
-        <button
+        </a>
+        <a
           class="nav-item nav-link signin"
           routerLink="auth/signin"
           routerLinkActive="active-others"
         >
           Sign In
-        </button>
-        <button
+        </a>
+        <a
           class="nav-item nav-link register"
           routerLink="auth/register"
           routerLinkActive="active-others"
         >
           Register
-        </button>
+        </a>
       </div>
     </div>
   </ng-template>
