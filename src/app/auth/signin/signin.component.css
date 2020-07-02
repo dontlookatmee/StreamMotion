@@ -92,6 +92,7 @@ button[type="submit"] {
   font-weight: 700;
   letter-spacing: 1px;
 }
+
 button[type="submit"]:hover:enabled {
   background-color: #ffcb9a;
 }

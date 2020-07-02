@@ -8,7 +8,7 @@ import {
 import { Observable, of, from } from 'rxjs';
 import { TwitchService, Token } from '../services/twitch/twitch.service';
 import { switchMap, tap } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class TwitchInterceptor implements HttpInterceptor {
