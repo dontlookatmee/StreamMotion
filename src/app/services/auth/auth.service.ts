@@ -15,6 +15,7 @@ interface User {
   email: string;
   displayName: string;
   photoURL?: string;
+  password?: string;
 }
 
 @Injectable({
@@ -40,36 +41,61 @@ export class AuthService {
       })
     );
   }
+  async handleEmailSignup(form: FormGroup) {
+    console.log('auth service outer signup fired');
+
+    if (form.valid && form.get('passwords').valid) {
+      console.log('auth service inner signup fired');
+      const email = form.get('email').value;
+      const password = form.get('passwords.password').value;
+      const displayName = form.get('displayName').value;
+
+      await this.afAuth
+        .createUserWithEmailAndPassword(email, password)
+        .then((user) => {
+          const data = {
+            uid: user.user.uid,
+            email,
+            password,
+            displayName,
+            photoURL: '',
+          };
+          console.log('added to database');
+          this.updateUserData(data, 'email');
+        });
+    }
+  }
+
   async handleEmailSingin(form: FormGroup) {
     if (form.valid) {
       const data = {
-        email: form.controls.email.value,
-        password: form.controls.password.value,
+        email: form.get('email').value,
+        password: form.get('passwords.password').value,
       };
       const credentials = await this.afAuth.signInWithEmailAndPassword(
         data.email,
         data.password
       );
-      return this.updateUserData(credentials.user);
+      return this.updateUserData(credentials.user, 'credential');
     }
   }
 
   async handleGoogleSingin() {
     const provider = new auth.GoogleAuthProvider();
     const credentials = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credentials.user);
+    return this.updateUserData(credentials.user, 'credential');
   }
 
   async handleFacebookSignin() {
     const provider = new auth.FacebookAuthProvider();
     const credentials = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credentials.user);
+    return this.updateUserData(credentials.user, 'credential');
   }
 
   async handleTwitterSignin() {
     const provider = new auth.TwitterAuthProvider();
     const credentials = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credentials.user);
+    return this.updateUserData(credentials.user, 'credential');
   }
 
   async signOut() {
@@ -77,7 +103,10 @@ export class AuthService {
     return this.router.navigate(['/']);
   }
 
-  updateUserData({ uid, email, displayName, photoURL }: User) {
+  updateUserData(
+    { uid, email, displayName, photoURL, password }: User,
+    type: string
+  ) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${uid}`
     );
@@ -88,6 +117,8 @@ export class AuthService {
       displayName,
       photoURL,
     };
+
+    type === 'credential' ? data : (data['password'] = password);
 
     return userRef.set(data, { merge: true });
   }
