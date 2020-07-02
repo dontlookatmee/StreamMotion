@@ -1,0 +1,56 @@
+<div class="register-container">
+  <div class="container">
+    <div class="auth-wrapper">
+      <div class="auth-form-wrapper">
+        <div class="auth-media">
+          <img src="../../../assets/illustrations/form.svg" />
+        </div>
+        <div class="auth-form">
+          <div class="auth-form-label">
+            <p class="primary-label">Sign in</p>
+          </div>
+          <div class="social-container">
+            <a (click)="handleFacebookSignin()" class="social"
+              ><i class="fa fa-facebook" aria-hidden="true"></i
+            ></a>
+            <a (click)="handleGoogleSingin()" class="social"
+              ><i class="fa fa-google" aria-hidden="true"></i
+            ></a>
+            <a (click)="handleTwitterSignin()" class="social"
+              ><i class="fa fa-twitter" aria-hidden="true"></i
+            ></a>
+          </div>
+          <!--	<form> -->
+          <form [formGroup]="registerForm" (ngSubmit)="handleEmailSingin()">
+            <div>
+              <app-input
+                [control]="registerForm.controls.email"
+                placeholder="Email"
+                name="email"
+              ></app-input>
+            </div>
+
+            <div>
+              <app-input
+                [control]="registerForm.controls.password"
+                placeholder="Password"
+                type="password"
+                name="password"
+              ></app-input>
+            </div>
+            <div class="auth-links-container">
+              <p class="auth-fp-link">Forgot password?</p>
+            </div>
+
+            <div>
+              <button type="submit" [disabled]="registerForm.invalid">
+                Sing In
+              </button>
+            </div>
+          </form>
+          <!--	</form> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
