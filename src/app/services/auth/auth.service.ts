@@ -2,21 +2,19 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { auth } from 'firebase';
+import { auth } from 'firebase/app';
 import { switchMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
 
 interface User {
-  avatar: string;
-  description: string;
-  email: string;
-  name: string;
-  password: string;
-  services: [];
-  status: string;
   uid: string;
-  last_changed: Date;
+  email: string;
+  displayName: string;
+  photoURL?: string;
 }
 
 @Injectable({
@@ -27,69 +25,70 @@ export class AuthService {
   userId: string;
 
   constructor(
-    private fAuth: AngularFireAuth,
+    private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router
   ) {
-    this.user$ = this.fAuth.authState.pipe(
+    this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
           this.userId = user.uid;
-          return this.afs.doc<User>(`profiles/${user.uid}`).valueChanges();
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
       })
     );
   }
-  handleEmailSingin(form: FormGroup) {
+  async handleEmailSingin(form: FormGroup) {
     if (form.valid) {
       const data = {
         email: form.controls.email.value,
         password: form.controls.password.value,
       };
-
-      this.fAuth
-        .signInWithEmailAndPassword(data.email, data.password)
-        .then((x) => {
-          this.router.navigate(['./']);
-        })
-        .catch((err) => {
-          alert(err);
-        });
+      const credentials = await this.afAuth.signInWithEmailAndPassword(
+        data.email,
+        data.password
+      );
+      return this.updateUserData(credentials.user);
     }
   }
 
-  handleGoogleSingin() {
-    this.fAuth
-      .signInWithPopup(new auth.GoogleAuthProvider())
-      .then((x) => {
-        this.router.navigate(['./']);
-      })
-      .catch((err) => {
-        alert(err);
-      });
+  async handleGoogleSingin() {
+    const provider = new auth.GoogleAuthProvider();
+    const credentials = await this.afAuth.signInWithPopup(provider);
+    return this.updateUserData(credentials.user);
   }
 
-  handleFacebookSignin() {
-    this.fAuth
-      .signInWithPopup(new auth.FacebookAuthProvider())
-      .then((x) => {
-        this.router.navigate(['./']);
-      })
-      .catch((err) => {
-        alert(err);
-      });
+  async handleFacebookSignin() {
+    const provider = new auth.FacebookAuthProvider();
+    const credentials = await this.afAuth.signInWithPopup(provider);
+    return this.updateUserData(credentials.user);
   }
 
-  handleTwitterSignin() {
-    this.fAuth
-      .signInWithPopup(new auth.TwitterAuthProvider())
-      .then((x) => {
-        this.router.navigate(['./']);
-      })
-      .catch((err) => {
-        alert(err);
-      });
+  async handleTwitterSignin() {
+    const provider = new auth.TwitterAuthProvider();
+    const credentials = await this.afAuth.signInWithPopup(provider);
+    return this.updateUserData(credentials.user);
+  }
+
+  async signOut() {
+    await this.afAuth.signOut();
+    return this.router.navigate(['./']);
+  }
+
+  updateUserData({ uid, email, displayName, photoURL }: User) {
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(
+      `users/${uid}`
+    );
+
+    const data = {
+      uid,
+      email,
+      displayName,
+      photoURL,
+    };
+
+    return userRef.set(data, { merge: true });
   }
 }

@@ -26,32 +26,5 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  handleEmailSingin() {
-    if (this.registerForm.valid) {
-      const data = {
-        email: this.registerForm.controls.email.value,
-        password: this.registerForm.controls.password.value,
-      };
-
-      this.fAuth
-        .signInWithEmailAndPassword(data.email, data.password)
-        .then((x) => {
-          this.router.navigate(['./']);
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    }
-  }
-
-  handleGoogleSingin() {
-    this.fAuth
-      .signInWithPopup(new auth.GoogleAuthProvider())
-      .then((x) => {
-        this.router.navigate(['./']);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  }
+  
 }
