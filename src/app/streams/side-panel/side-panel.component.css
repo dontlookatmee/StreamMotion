@@ -1,0 +1,24 @@
+.panel {
+  height: calc(100vh - 65px);
+  overflow: auto;
+  background-color: #f7f7f8;
+}
+.header {
+  margin: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.no-favourites p {
+  width: 80%;
+  margin: 10px auto;
+  text-align: center;
+}
+.show-more {
+  margin: 10px !important;
+  color: #d9b08c;
+}
+.show-more:hover {
+  cursor: pointer;
+  color: #ffcb9a;
+}

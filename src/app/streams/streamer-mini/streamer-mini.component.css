@@ -1,0 +1,56 @@
+.streamer-mini {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 300px;
+  height: 65px;
+  padding: 0 6px;
+}
+.streamer-mini:hover {
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+.avatar {
+  flex-basis: 16%;
+}
+.avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 99px;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 64%;
+}
+.about p {
+  margin: 0;
+}
+.about p:first-of-type {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.about p:last-of-type {
+  font-size: 0.7rem;
+}
+
+.status {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  flex-basis: 20%;
+}
+.status p {
+  margin: 0;
+}
+.status i {
+  height: 10px;
+  width: 10px;
+  margin-right: 3px;
+  font-size: 0.6rem;
+  color: green;
+}

@@ -1,0 +1,36 @@
+<section class="panel">
+  <section class="favourite">
+    <p class="header">Favourite Streams</p>
+    <ul>
+      <app-streamer-mini></app-streamer-mini>
+      <app-streamer-mini></app-streamer-mini>
+      <app-streamer-mini></app-streamer-mini>
+      <ng-container *ngIf="showMoreFavourite">
+        <app-streamer-mini></app-streamer-mini>
+        <app-streamer-mini></app-streamer-mini>
+      </ng-container>
+    </ul>
+    <p (click)="handleShowMoreFavourite()" class="show-more">
+      {{ showMoreFavourite ? "Show Less..." : "Show More..." }}
+    </p>
+  </section>
+  <section *ngIf="false" class="no-favourites">
+    <p>You don't have any favourite streams.</p>
+  </section>
+  <section class="recommended">
+    <p class="header">Recommended Streams</p>
+    <ul>
+      <app-streamer-mini></app-streamer-mini>
+      <app-streamer-mini></app-streamer-mini>
+      <app-streamer-mini></app-streamer-mini>
+      <ng-container *ngIf="showMoreRecommended">
+        <app-streamer-mini></app-streamer-mini>
+        <app-streamer-mini></app-streamer-mini>
+        <app-streamer-mini></app-streamer-mini>
+      </ng-container>
+    </ul>
+    <p (click)="handleShowMoreRecommended()" class="show-more">
+      {{ showMoreRecommended ? "Show Less..." : "Show More..." }}
+    </p>
+  </section>
+</section>
