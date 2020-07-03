@@ -23,7 +23,7 @@
 .about {
   display: flex;
   flex-direction: column;
-  flex-basis: 64%;
+  flex-basis: 60%;
 }
 .about p {
   margin: 0;
@@ -42,7 +42,7 @@
   flex-wrap: wrap;
   align-content: center;
   align-items: center;
-  flex-basis: 20%;
+  flex-basis: 24%;
 }
 .status p {
   margin: 0;

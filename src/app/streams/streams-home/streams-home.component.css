@@ -1,9 +1,42 @@
 .home {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    rgb(55, 66, 61) 0%,
+    rgba(17, 100, 102, 1) 100%
+  );
 }
 .side-panel {
+  flex-basis: 20%;
   height: 100%;
+}
+
+.main {
+  flex-basis: 80%;
+  padding: 50px;
+}
+.main h1 {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.category ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  width: 230px;
+}
+.category ul li {
+  color: #fff;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+.active-category {
+  color: #ffcb9a !important;
+  border-bottom: 2px solid #ffcb9a !important;
 }
