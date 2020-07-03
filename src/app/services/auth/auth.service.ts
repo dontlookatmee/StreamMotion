@@ -9,6 +9,7 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
 
 interface User {
   uid: string;
@@ -16,6 +17,7 @@ interface User {
   displayName: string;
   photoURL?: string;
   password?: string;
+  favouriteStreams?: string[];
 }
 
 @Injectable({
@@ -68,7 +70,6 @@ export class AuthService {
         email: form.get('email').value,
         password: form.get('password').value,
       };
-      console.log(data);
 
       await this.afAuth.signInWithEmailAndPassword(data.email, data.password);
     }
@@ -97,7 +98,7 @@ export class AuthService {
     return this.router.navigate(['/']);
   }
 
-  updateUserData(
+  async updateUserData(
     { uid, email, displayName, photoURL, password }: User,
     type?: string
   ) {
@@ -110,13 +111,15 @@ export class AuthService {
       email,
       displayName,
       photoURL,
-      status: 'online',
     };
 
     if (type === 'email') {
       data['password'] = password;
     }
 
-    return userRef.set(data, { merge: true });
+    return await userRef.update(data).catch((err) => {
+      data['favouriteStreams'] = [];
+      userRef.set(data, { merge: true });
+    });
   }
 }
