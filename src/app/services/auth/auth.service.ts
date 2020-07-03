@@ -41,12 +41,12 @@ export class AuthService {
       })
     );
   }
+
   async handleEmailSignup(form: FormGroup) {
     if (form.valid && form.get('passwords').valid) {
       const email = form.get('email').value;
       const password = form.get('passwords.password').value;
       const displayName = form.get('displayName').value;
-
       await this.afAuth
         .createUserWithEmailAndPassword(email, password)
         .then((user) => {
@@ -66,13 +66,11 @@ export class AuthService {
     if (form.valid) {
       const data = {
         email: form.get('email').value,
-        password: form.get('passwords.password').value,
+        password: form.get('password').value,
       };
-      const credentials = await this.afAuth.signInWithEmailAndPassword(
-        data.email,
-        data.password
-      );
-      return this.updateUserData(credentials.user);
+      console.log(data);
+
+      await this.afAuth.signInWithEmailAndPassword(data.email, data.password);
     }
   }
 
@@ -112,6 +110,7 @@ export class AuthService {
       email,
       displayName,
       photoURL,
+      status: 'online',
     };
 
     if (type === 'email') {

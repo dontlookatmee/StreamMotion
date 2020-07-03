@@ -49,3 +49,5 @@ Thumbs.db
 # firebase
 .firebaserc
 firebase.json
+.firebase/
+firebase-debug.log
