@@ -1,8 +1,8 @@
 .top-games {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
   grid-auto-rows: minmax(150px, auto);
   grid-gap: 1rem;
-  width: 96%;
-  margin: 20px auto;
+  grid-row-gap: 2rem;
+  width: 100%;
 }

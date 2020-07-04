@@ -10,12 +10,12 @@
   );
 }
 .side-panel {
-  flex-basis: 20%;
+  flex-basis: 15%;
   height: 100%;
 }
 
 .main {
-  flex-basis: 80%;
+  flex-basis: 85%;
   padding: 50px;
 }
 .main h1 {
