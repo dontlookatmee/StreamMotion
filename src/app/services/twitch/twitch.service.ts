@@ -4,10 +4,6 @@ import { environment } from '../../../environments/environment';
 import { tap } from 'rxjs/operators';
 import { Stream, Token, Games } from '../../models/models';
 
-export interface StreamsMetadata {
-  data: Stream[];
-}
-
 @Injectable({
   providedIn: 'root',
 })

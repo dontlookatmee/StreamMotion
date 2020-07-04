@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitchService } from 'src/app/services/twitch/twitch.service';
-import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Games } from '../../models/models';
 
 @Component({
@@ -10,12 +10,17 @@ import { Games } from '../../models/models';
 })
 export class GamesComponent implements OnInit {
   topGames: Games;
+  twitchService: Subscription;
 
   constructor(private tw: TwitchService) {}
 
   ngOnInit(): void {
-    this.tw.getTopGames().subscribe((games: Games) => {
+    this.twitchService = this.tw.getTopGames().subscribe((games: Games) => {
       this.topGames = games;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.twitchService.unsubscribe();
   }
 }

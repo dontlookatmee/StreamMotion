@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  StreamsMetadata,
-  Stream,
-  TwitchService,
-} from 'src/app/services/twitch/twitch.service';
+import { TwitchService } from 'src/app/services/twitch/twitch.service';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { StreamsMetadata, Stream } from '../../models/models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-about-motion',
@@ -14,14 +12,17 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 export class AboutMotionComponent implements OnInit {
   streams: StreamsMetadata;
   streamer: SafeResourceUrl;
+  twitchServiceSub: Subscription;
 
   constructor(private tw: TwitchService, private sanitized: DomSanitizer) {}
 
   ngOnInit(): void {
-    this.tw.getStreamers().subscribe((streams: StreamsMetadata) => {
-      this.streams = streams;
-      this.streamer = this.getRandomStreamer(streams.data);
-    });
+    this.twitchServiceSub = this.tw
+      .getStreamers()
+      .subscribe((streams: StreamsMetadata) => {
+        this.streams = streams;
+        this.streamer = this.getRandomStreamer(streams.data);
+      });
   }
 
   getRandomStreamer(streams: Stream[]) {
@@ -33,5 +34,9 @@ export class AboutMotionComponent implements OnInit {
 
   secureUrl(url: string): SafeResourceUrl {
     return this.sanitized.bypassSecurityTrustResourceUrl(url);
+  }
+
+  ngOnDestroy(): void {
+    this.twitchServiceSub.unsubscribe();
   }
 }

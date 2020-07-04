@@ -16,6 +16,9 @@ export interface Stream {
   user_name: string;
   view_count: number;
 }
+export interface StreamsMetadata {
+  data: Stream[];
+}
 
 export interface Games {
   data: {

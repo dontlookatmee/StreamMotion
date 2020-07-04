@@ -2,9 +2,6 @@
   display: flex;
   flex-direction: column;
 }
-.game-card:hover p {
-  color: #d9b08c;
-}
 
 img {
   width: 100%;
@@ -12,9 +9,14 @@ img {
   margin-bottom: 10px;
   transition: transform 0.2s;
 }
-img:hover {
+.game-card:hover {
   cursor: pointer;
+}
+.game-card:hover img {
   transform: scale(1.1);
+}
+.game-card:hover p {
+  color: #d9b08c;
 }
 
 p {

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-card',
@@ -8,10 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GameCardComponent implements OnInit {
   @Input('name') name: string;
   @Input('image') image: string;
+  @Input('id') id: string;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  redirectToStreams() {
+    this.router.navigate(['streams', this.name]);
+  }
 
   editImage(img: string) {
     const cutIndex = img.indexOf('{width}');

@@ -7,10 +7,11 @@ import { SidePanelComponent } from './side-panel/side-panel.component';
 import { StreamerMiniComponent } from './streamer-mini/streamer-mini.component';
 import { GamesComponent } from './games/games.component';
 import { GameCardComponent } from './game-card/game-card.component';
+import { GameStreamsComponent } from './game-streams/game-streams.component';
 
 
 @NgModule({
-  declarations: [StreamsHomeComponent, SidePanelComponent, StreamerMiniComponent, GamesComponent, GameCardComponent],
+  declarations: [StreamsHomeComponent, SidePanelComponent, StreamerMiniComponent, GamesComponent, GameCardComponent, GameStreamsComponent],
   imports: [
     CommonModule,
     StreamsRoutingModule
