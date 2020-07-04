@@ -16,3 +16,11 @@ export interface Stream {
   user_name: string;
   view_count: number;
 }
+
+export interface Games {
+  data: {
+    id: string;
+    name: string;
+    box_art_url: string;
+  }[];
+}

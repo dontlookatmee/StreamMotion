@@ -2,11 +2,21 @@
   display: flex;
   flex-direction: column;
 }
+.game-card:hover p {
+  color: #d9b08c;
+}
+
 img {
   width: 100%;
   height: 250px;
   margin-bottom: 10px;
+  transition: transform 0.2s;
 }
+img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 p {
   margin-bottom: 10px;
   color: #fff;
@@ -18,6 +28,7 @@ p.viewers {
   font-size: 0.8rem;
   margin-bottom: 10px;
 }
+
 .category span {
   font-size: 0.8rem;
   color: #fff;
