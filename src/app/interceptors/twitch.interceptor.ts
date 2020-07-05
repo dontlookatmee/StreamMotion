@@ -5,9 +5,8 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable, of, from } from 'rxjs';
-import { TwitchService, Token } from '../services/twitch/twitch.service';
-import { switchMap, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { TwitchService } from '../services/twitch/twitch.service';
 import { environment } from '../../environments/environment.prod';
 
 @Injectable()

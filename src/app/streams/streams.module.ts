@@ -8,10 +8,11 @@ import { StreamerMiniComponent } from './streamer-mini/streamer-mini.component';
 import { GamesComponent } from './games/games.component';
 import { GameCardComponent } from './game-card/game-card.component';
 import { GameStreamsComponent } from './game-streams/game-streams.component';
+import { StreamFrameComponent } from './stream-frame/stream-frame.component';
 
 
 @NgModule({
-  declarations: [StreamsHomeComponent, SidePanelComponent, StreamerMiniComponent, GamesComponent, GameCardComponent, GameStreamsComponent],
+  declarations: [StreamsHomeComponent, SidePanelComponent, StreamerMiniComponent, GamesComponent, GameCardComponent, GameStreamsComponent, StreamFrameComponent],
   imports: [
     CommonModule,
     StreamsRoutingModule

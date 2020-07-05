@@ -16,7 +16,7 @@ export class GameCardComponent implements OnInit {
   ngOnInit(): void {}
 
   redirectToStreams() {
-    this.router.navigate(['streams', this.name]);
+    this.router.navigate(['streams', this.id]);
   }
 
   editImage(img: string) {

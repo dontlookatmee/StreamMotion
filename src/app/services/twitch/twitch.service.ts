@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { tap } from 'rxjs/operators';
-import { Stream, Token, Games } from '../../models/models';
+import { StreamsMetadata, Token, Games } from '../../models/models';
 
 @Injectable({
   providedIn: 'root',
@@ -40,9 +40,14 @@ export class TwitchService implements OnInit {
     return JSON.parse(token);
   }
 
-  getStreamers() {
+  getStreamers(gameId?: string) {
     return this.http.get<StreamsMetadata>(
-      'https://api.twitch.tv/helix/streams'
+      'https://api.twitch.tv/helix/streams',
+      {
+        params: {
+          game_id: gameId,
+        },
+      }
     );
   }
 
