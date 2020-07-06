@@ -18,8 +18,9 @@ export class AboutMotionComponent implements OnInit {
 
   ngOnInit(): void {
     this.twitchServiceSub = this.tw
-      .fetchStreams()
+      .fetchAllStreams()
       .subscribe((streams: StreamsMetadata) => {
+        console.log(streams);
         this.streams = streams;
         this.streamer = this.getRandomStreamer(streams.data);
       });
