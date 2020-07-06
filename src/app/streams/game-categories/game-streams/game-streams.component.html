@@ -1,3 +1,6 @@
 <section class="games-streams">
-  <app-iframe></app-iframe>
+  <app-iframe
+    *ngFor="let stream of streamers?.data"
+    [name]="stream.user_name"
+  ></app-iframe>
 </section>

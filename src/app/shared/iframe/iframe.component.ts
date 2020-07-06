@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-iframe',
@@ -8,18 +7,9 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 })
 export class IframeComponent implements OnInit {
   @Input('name') name: string;
-  link: SafeResourceUrl;
-  constructor(private sanitized: DomSanitizer) {}
+  url: string = `https://player.twitch.tv/?channel=${this.name}&muted=true&parent=localhost`;
+
+  constructor() {}
 
   ngOnInit(): void {}
-
-  getRandomStreamer() {
-    this.link = this.secureUrl(
-      `https://player.twitch.tv/?channel=${this.name}&muted=true&parent=localhost`
-    );
-  }
-
-  secureUrl(url: string): SafeResourceUrl {
-    return this.sanitized.bypassSecurityTrustResourceUrl(url);
-  }
 }

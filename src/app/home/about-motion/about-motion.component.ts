@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitchService } from 'src/app/services/twitch/twitch.service';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { StreamsMetadata, Stream } from '../../models/models';
 import { Subscription } from 'rxjs';
 
@@ -11,10 +10,10 @@ import { Subscription } from 'rxjs';
 })
 export class AboutMotionComponent implements OnInit {
   streams: StreamsMetadata;
-  streamer: SafeResourceUrl;
+  streamer: string;
   twitchServiceSub: Subscription;
 
-  constructor(private tw: TwitchService, private sanitized: DomSanitizer) {}
+  constructor(private tw: TwitchService) {}
 
   ngOnInit(): void {
     this.twitchServiceSub = this.tw
@@ -28,13 +27,7 @@ export class AboutMotionComponent implements OnInit {
 
   getRandomStreamer(streams: Stream[]) {
     const randomNumb = Math.floor(Math.random() * streams.length);
-    return this.secureUrl(
-      `https://player.twitch.tv/?channel=${streams[randomNumb]?.user_name}&muted=true&parent=localhost`
-    );
-  }
-
-  secureUrl(url: string): SafeResourceUrl {
-    return this.sanitized.bypassSecurityTrustResourceUrl(url);
+    return `https://player.twitch.tv/?channel=${streams[randomNumb]?.user_name}&muted=true&parent=localhost`;
   }
 
   ngOnDestroy(): void {

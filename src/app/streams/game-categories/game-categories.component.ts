@@ -15,9 +15,11 @@ export class GameCategoriesComponent implements OnInit {
   constructor(private tw: TwitchService) {}
 
   ngOnInit(): void {
-    this.tw.fetchTopGames().subscribe((games: Games) => {
-      this.topGames = games;
-    });
+    this.twitchTopGamesSub = this.tw
+      .fetchTopGames()
+      .subscribe((games: Games) => {
+        this.topGames = games;
+      });
   }
 
   ngOnDestroy(): void {

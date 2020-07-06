@@ -1,1 +1,5 @@
-<iframe class="embed-responsive-item" [src]="link" allowfullscreen></iframe>
+<iframe
+  class="embed-responsive-item"
+  [src]="url | safeUrl"
+  allowfullscreen
+></iframe>
