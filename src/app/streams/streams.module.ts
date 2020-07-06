@@ -10,6 +10,7 @@ import { GameCategoriesComponent } from './game-categories/game-categories.compo
 import { StreamsAllComponent } from './streams-all/streams-all.component';
 import { RenderGameImagePipe } from './pipes/render-game-image.pipe';
 import { GameStreamsComponent } from './game-categories/game-streams/game-streams.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,6 @@ import { GameStreamsComponent } from './game-categories/game-streams/game-stream
     RenderGameImagePipe,
     GameStreamsComponent,
   ],
-  imports: [CommonModule, StreamsRoutingModule],
+  imports: [CommonModule, StreamsRoutingModule, SharedModule],
 })
 export class StreamsModule {}
