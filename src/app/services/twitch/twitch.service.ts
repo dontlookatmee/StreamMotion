@@ -40,18 +40,19 @@ export class TwitchService implements OnInit {
     return JSON.parse(token);
   }
 
-  getStreamers(gameId?: string) {
+  fetchStreams(gameId?: string) {
     return this.http.get<StreamsMetadata>(
       'https://api.twitch.tv/helix/streams',
       {
         params: {
           game_id: gameId,
+          first: '100',
         },
       }
     );
   }
 
-  getTopGames() {
+  fetchTopGames() {
     return this.http.get<Games>('https://api.twitch.tv/helix/games/top', {
       params: {
         first: '100',
