@@ -16,6 +16,6 @@ export class GameCardComponent implements OnInit {
   ngOnInit(): void {}
 
   redirectToGame() {
-    this.router.navigate(['./', this.gameId]);
+    this.router.navigate(['streams', this.gameId]);
   }
 }
