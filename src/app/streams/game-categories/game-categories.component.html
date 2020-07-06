@@ -1,1 +1,8 @@
-<p>game-categories works!</p>
+<section class="games-list">
+  <app-game-card
+    *ngFor="let game of topGames?.data"
+    [gameName]="game.name"
+    [gameImage]="game.box_art_url"
+    [gameId]="game.id"
+  ></app-game-card>
+</section>
