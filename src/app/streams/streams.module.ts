@@ -8,6 +8,7 @@ import { GameCardComponent } from './game-categories/game-card/game-card.compone
 import { StreamerMiniComponent } from './side-panel/streamer-mini/streamer-mini.component';
 import { GameCategoriesComponent } from './game-categories/game-categories.component';
 import { StreamsAllComponent } from './streams-all/streams-all.component';
+import { RenderGameImagePipe } from './pipes/render-game-image.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { StreamsAllComponent } from './streams-all/streams-all.component';
     StreamerMiniComponent,
     GameCategoriesComponent,
     StreamsAllComponent,
+    RenderGameImagePipe,
   ],
   imports: [CommonModule, StreamsRoutingModule],
 })
