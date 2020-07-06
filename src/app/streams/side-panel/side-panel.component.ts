@@ -12,12 +12,4 @@ export class SidePanelComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  handleShowMoreFavourite() {
-    this.showMoreFavourite = !this.showMoreFavourite;
-  }
-
-  handleShowMoreRecommended() {
-    this.showMoreRecommended = !this.showMoreRecommended;
-  }
 }
