@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TwitchService } from 'src/app/services/twitch/twitch.service';
 import { ActivatedRoute } from '@angular/router';
 import { StreamsMetadata } from '../../../models/models';
-import { Subscription } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-game-streams',
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class GameStreamsComponent implements OnInit {
   streamers: StreamsMetadata;
+  streamersSubject = new BehaviorSubject([]);
   fetchGameStreamsSub: Subscription;
 
   constructor(
@@ -20,12 +21,14 @@ export class GameStreamsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRouter.snapshot.paramMap.get('id');
-    this.tw
-      .fetchGameStreams(id, '100')
+    this.fetchGameStreamsSub = this.tw
+      .fetchGameStreams(id, '20')
       .subscribe((streams: StreamsMetadata) => {
         this.streamers = streams;
       });
   }
+
+  onScroll() {}
 
   ngOnDestroy(): void {
     this.fetchGameStreamsSub.unsubscribe();

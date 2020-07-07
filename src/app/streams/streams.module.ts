@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 import { StreamsRoutingModule } from './streams-routing.module';
 import { StreamsHomeComponent } from './streams-home/streams-home.component';
 import { SidePanelComponent } from './side-panel/side-panel.component';
@@ -23,6 +25,11 @@ import { SharedModule } from '../shared/shared.module';
     RenderGameImagePipe,
     GameStreamsComponent,
   ],
-  imports: [CommonModule, StreamsRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    StreamsRoutingModule,
+    SharedModule,
+    InfiniteScrollModule,
+  ],
 })
 export class StreamsModule {}

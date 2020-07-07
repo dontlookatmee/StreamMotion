@@ -7,9 +7,10 @@ import { InputComponent } from './input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IframeComponent } from './iframe/iframe.component';
 import { SafeUrlPipe } from './safe-url/safe-url.pipe';
+import { StreamCardComponent } from './stream-card/stream-card.component';
 
 @NgModule({
-  declarations: [ButtonComponent, InputComponent, IframeComponent, SafeUrlPipe],
+  declarations: [ButtonComponent, InputComponent, IframeComponent, SafeUrlPipe, StreamCardComponent],
   imports: [CommonModule, SharedRoutingModule, ReactiveFormsModule],
   exports: [ButtonComponent, InputComponent, IframeComponent, SafeUrlPipe],
 })

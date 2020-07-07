@@ -54,7 +54,7 @@ export class TwitchService implements OnInit {
     });
   }
 
-  fetchGameStreams(gameId: string, howMany: string) {
+  fetchGameStreams(gameId: string, howMany?: string) {
     return this.http.get<StreamsMetadata>(
       'https://api.twitch.tv/helix/streams',
       {

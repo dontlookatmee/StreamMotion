@@ -1,6 +1,7 @@
-<section class="games-streams">
-  <app-iframe
-    *ngFor="let stream of streamers?.data"
-    [name]="stream.user_name"
-  ></app-iframe>
-</section>
+<section
+  class="games-streams"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="1000"
+  (scrolled)="onScroll()"
+></section>
