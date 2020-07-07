@@ -18,6 +18,9 @@ export interface Stream {
 }
 export interface StreamsMetadata {
   data: Stream[];
+  pagination: {
+    cursor: string;
+  };
 }
 
 export interface Games {

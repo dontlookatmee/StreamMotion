@@ -3,7 +3,8 @@ import { TwitchService } from 'src/app/services/twitch/twitch.service';
 import { ActivatedRoute } from '@angular/router';
 import { StreamsMetadata, Stream } from '../../../models/models';
 import { Subscription, BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-game-streams',
@@ -13,7 +14,7 @@ import { tap } from 'rxjs/operators';
 export class GameStreamsComponent implements OnInit {
   gameId: string;
   streams = new BehaviorSubject([]);
-  streamsNumber = 10;
+  cursor = '';
   fetchGameStreamsSub: Subscription;
 
   constructor(
@@ -22,26 +23,26 @@ export class GameStreamsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('ngoninit');
     this.gameId = this.activatedRouter.snapshot.paramMap.get('id');
     this.fetchStreamers();
   }
 
   onScroll() {
-    console.log('scrolled');
-    if (this.streamsNumber >= 100) return;
     this.fetchStreamers();
   }
 
   fetchStreamers() {
-    this.streamsNumber += 10;
-
     this.tw
-      .fetchGameStreams(this.gameId, this.streamsNumber)
+      .fetchGameStreams(this.gameId, this.cursor)
       .pipe(
         tap((streams: StreamsMetadata) => {
-          this.streams.next(streams.data);
-        })
+          this.cursor = streams.pagination.cursor;
+          const newStreams = _.slice(streams.data, 0);
+          const currentStreams = this.streams.getValue();
+
+          this.streams.next(_.concat(currentStreams, newStreams));
+        }),
+        take(1)
       )
       .subscribe();
   }

@@ -54,14 +54,17 @@ export class TwitchService implements OnInit {
     });
   }
 
-  fetchGameStreams(gameId: string, howMany?: number) {
+  fetchGameStreams(gameId: string, after?: string) {
+    let query = {
+      game_id: gameId,
+      first: '20',
+      after,
+    };
+
     return this.http.get<StreamsMetadata>(
       'https://api.twitch.tv/helix/streams',
       {
-        params: {
-          game_id: gameId,
-          first: howMany.toString(),
-        },
+        params: query,
       }
     );
   }
