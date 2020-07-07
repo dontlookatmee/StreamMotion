@@ -12,6 +12,7 @@ import { GameCategoriesComponent } from './game-categories/game-categories.compo
 import { StreamsAllComponent } from './streams-all/streams-all.component';
 import { GameStreamsComponent } from './game-categories/game-streams/game-streams.component';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     StreamsRoutingModule,
     SharedModule,
+    CoreModule,
     InfiniteScrollModule,
   ],
 })
