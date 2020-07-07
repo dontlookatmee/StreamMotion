@@ -30,11 +30,14 @@ export class GameStreamsComponent implements OnInit {
   onScroll() {
     console.log('scrolled');
     if (this.streamsNumber >= 100) return;
+    this.fetchStreamers();
   }
 
   fetchStreamers() {
+    this.streamsNumber += 10;
+
     this.tw
-      .fetchGameStreams(this.gameId, 10)
+      .fetchGameStreams(this.gameId, this.streamsNumber)
       .pipe(
         tap((streams: StreamsMetadata) => {
           this.streams.next(streams.data);
@@ -42,7 +45,4 @@ export class GameStreamsComponent implements OnInit {
       )
       .subscribe();
   }
-  // ngOnDestroy(): void {
-  //   this.fetchGameStreamsSub.unsubscribe();
-  // }
 }
