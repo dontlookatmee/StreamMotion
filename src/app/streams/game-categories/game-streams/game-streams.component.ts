@@ -22,9 +22,10 @@ export class GameStreamsComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRouter.snapshot.paramMap.get('id');
     this.fetchGameStreamsSub = this.tw
-      .fetchGameStreams(id, '20')
+      .fetchGameStreams(id, '100')
       .subscribe((streams: StreamsMetadata) => {
         this.streamers = streams;
+        console.log(this.streamers);
       });
   }
 

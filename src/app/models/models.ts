@@ -14,7 +14,7 @@ export interface Stream {
   type: string;
   user_id: string;
   user_name: string;
-  view_count: number;
+  viewer_count: number;
 }
 export interface StreamsMetadata {
   data: Stream[];
