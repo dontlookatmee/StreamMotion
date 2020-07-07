@@ -2,11 +2,11 @@
   class="games-streams"
   infiniteScroll
   [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="1000"
+  [infiniteScrollThrottle]="50"
   (scrolled)="onScroll()"
 >
   <app-stream-card
-    *ngFor="let stream of streamers?.data"
+    *ngFor="let stream of streams | async"
     [name]="stream.user_name"
     [title]="stream.title"
     [viewers]="stream.viewer_count"

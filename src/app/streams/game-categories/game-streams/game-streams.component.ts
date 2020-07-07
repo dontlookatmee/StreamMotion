@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitchService } from 'src/app/services/twitch/twitch.service';
 import { ActivatedRoute } from '@angular/router';
-import { StreamsMetadata } from '../../../models/models';
+import { StreamsMetadata, Stream } from '../../../models/models';
 import { Subscription, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game-streams',
@@ -10,27 +11,38 @@ import { Subscription, BehaviorSubject } from 'rxjs';
   styleUrls: ['./game-streams.component.css'],
 })
 export class GameStreamsComponent implements OnInit {
-  streamers: StreamsMetadata;
-  streamersSubject = new BehaviorSubject([]);
+  gameId: string;
+  streams = new BehaviorSubject([]);
+  streamsNumber = 10;
   fetchGameStreamsSub: Subscription;
 
   constructor(
-    private tw: TwitchService,
+    public tw: TwitchService,
     private activatedRouter: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    const id = this.activatedRouter.snapshot.paramMap.get('id');
-    this.fetchGameStreamsSub = this.tw
-      .fetchGameStreams(id, '100')
-      .subscribe((streams: StreamsMetadata) => {
-        this.streamers = streams;
-      });
+    console.log('ngoninit');
+    this.gameId = this.activatedRouter.snapshot.paramMap.get('id');
+    this.fetchStreamers();
   }
 
-  onScroll() {}
-
-  ngOnDestroy(): void {
-    this.fetchGameStreamsSub.unsubscribe();
+  onScroll() {
+    console.log('scrolled');
+    if (this.streamsNumber >= 100) return;
   }
+
+  fetchStreamers() {
+    this.tw
+      .fetchGameStreams(this.gameId, 10)
+      .pipe(
+        tap((streams: StreamsMetadata) => {
+          this.streams.next(streams.data);
+        })
+      )
+      .subscribe();
+  }
+  // ngOnDestroy(): void {
+  //   this.fetchGameStreamsSub.unsubscribe();
+  // }
 }
