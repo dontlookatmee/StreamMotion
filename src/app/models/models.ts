@@ -7,7 +7,7 @@ export interface Token {
 export interface Stream {
   game_id: string;
   id: string;
-  lagunage: string;
+  language: string;
   started_at: string;
   thumbnail_url: string;
   title: string;

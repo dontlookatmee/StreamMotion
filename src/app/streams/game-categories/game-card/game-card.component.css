@@ -13,6 +13,7 @@ p {
 }
 .game-card:hover img {
   cursor: pointer;
-  transition: transform 0.2s;
-  transform: scale(1.1);
+  transition: translate box-shadow 1s;
+  transform: translate(4px, -4px);
+  box-shadow: -6px 6px 0px -1px rgb(255, 203, 154);
 }

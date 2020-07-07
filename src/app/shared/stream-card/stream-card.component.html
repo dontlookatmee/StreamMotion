@@ -1,6 +1,7 @@
 <section class="stream-card">
   <img [src]="image | imageRender" alt="" />
-  <p>Title: {{ title | sliceString: 35 }}</p>
-  <p>Name: {{ name }}</p>
-  <p>Viewers: {{ viewers }}</p>
+  <p class="title">{{ title | sliceString: 40 }}</p>
+  <p class="name">{{ name }}</p>
+  <span class="language">{{ language.toLocaleUpperCase() }}</span>
+  <span class="viewers">{{ viewers }} viewers</span>
 </section>
