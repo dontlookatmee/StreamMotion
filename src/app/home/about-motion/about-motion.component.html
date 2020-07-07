@@ -27,13 +27,11 @@
       </section>
     </section>
     <section class="iframe-container">
-      <iframe
+      <app-iframe
         *ngIf="streams?.data.length > 0"
-        class="embed-responsive-item"
-        [src]="streamer | safeUrl"
-        allowfullscreen
-      >
-      </iframe>
+        [name]="streamer"
+        [styles]="{ width: '100%', height: '450px' }"
+      ></app-iframe>
     </section>
   </section>
 </section>

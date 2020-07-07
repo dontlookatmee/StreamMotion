@@ -19,7 +19,6 @@ export class AboutMotionComponent implements OnInit {
     this.twitchServiceSub = this.tw
       .fetchAllStreams()
       .subscribe((streams: StreamsMetadata) => {
-        console.log(streams);
         this.streams = streams;
         this.streamer = this.getRandomStreamer(streams.data);
       });
@@ -27,7 +26,7 @@ export class AboutMotionComponent implements OnInit {
 
   getRandomStreamer(streams: Stream[]) {
     const randomNumb = Math.floor(Math.random() * streams.length);
-    return `https://player.twitch.tv/?channel=${streams[randomNumb]?.user_name}&muted=true&parent=localhost`;
+    return streams[randomNumb]?.user_name;
   }
 
   ngOnDestroy(): void {

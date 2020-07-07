@@ -7,9 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class IframeComponent implements OnInit {
   @Input('name') name: string;
-  url: string = `https://player.twitch.tv/?channel=${this.name}&muted=true&parent=localhost`;
+  @Input('styles') styles: {} = { width: '100%', height: '450px' };
+  url: string;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.url = `https://player.twitch.tv/?channel=${this.name}&muted=true&parent=localhost`;
+  }
+
+  ngAfterViewInit(): void {}
 }
