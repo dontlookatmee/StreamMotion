@@ -1,7 +1,18 @@
-<section
+<!-- <section
   class="games-streams"
   infiniteScroll
   [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="1000"
   (scrolled)="onScroll()"
-></section>
+></section> -->
+
+<section class="game-streams">
+  <app-stream-card
+    *ngFor="let stream of streamers?.data"
+    [name]="stream.user_name"
+    [title]="stream.title"
+    [viewers]="stream.view_count"
+    [image]="stream.thumbnail_url"
+    [id]="stream.id"
+  ></app-stream-card>
+</section>

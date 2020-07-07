@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stream-card',
   templateUrl: './stream-card.component.html',
-  styleUrls: ['./stream-card.component.css']
+  styleUrls: ['./stream-card.component.css'],
 })
 export class StreamCardComponent implements OnInit {
+  @Input('image') image: string;
+  @Input('name') name: string;
+  @Input('title') title: string;
+  @Input('viewers') viewers: string;
+  @Input('id') id: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

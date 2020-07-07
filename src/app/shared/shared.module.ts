@@ -8,10 +8,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IframeComponent } from './iframe/iframe.component';
 import { SafeUrlPipe } from './safe-url/safe-url.pipe';
 import { StreamCardComponent } from './stream-card/stream-card.component';
+import { ImageRenderPipe } from './pipes/ImageRender/image-render.pipe';
 
 @NgModule({
-  declarations: [ButtonComponent, InputComponent, IframeComponent, SafeUrlPipe, StreamCardComponent],
+  declarations: [
+    ButtonComponent,
+    InputComponent,
+    IframeComponent,
+    SafeUrlPipe,
+    StreamCardComponent,
+    ImageRenderPipe,
+  ],
   imports: [CommonModule, SharedRoutingModule, ReactiveFormsModule],
-  exports: [ButtonComponent, InputComponent, IframeComponent, SafeUrlPipe],
+  exports: [
+    ButtonComponent,
+    InputComponent,
+    IframeComponent,
+    SafeUrlPipe,
+    StreamCardComponent,
+    ImageRenderPipe,
+  ],
 })
 export class SharedModule {}

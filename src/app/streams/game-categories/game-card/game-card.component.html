@@ -1,4 +1,4 @@
 <section class="game-card" (click)="redirectToGame()">
-  <img src="{{ gameImage | renderGameImage }}" alt="" />
+  <img [src]="gameImage | imageRender" alt="" />
   <p>{{ gameName }}</p>
 </section>
