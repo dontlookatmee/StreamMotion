@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'renderGameImage',
+  name: 'imageRender',
 })
-export class RenderGameImagePipe implements PipeTransform {
+export class ImageRenderPipe implements PipeTransform {
   transform(image: string): string {
     const endIndex = image.indexOf('{width}x{height}.jpg');
     if (endIndex !== -1) {
