@@ -9,6 +9,7 @@ import { IframeComponent } from './iframe/iframe.component';
 import { SafeUrlPipe } from './safe-url/safe-url.pipe';
 import { StreamCardComponent } from './stream-card/stream-card.component';
 import { ImageRenderPipe } from './pipes/ImageRender/image-render.pipe';
+import { SliceStringPipe } from './pipes/SliceString/slice-string.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ImageRenderPipe } from './pipes/ImageRender/image-render.pipe';
     SafeUrlPipe,
     StreamCardComponent,
     ImageRenderPipe,
+    SliceStringPipe,
   ],
   imports: [CommonModule, SharedRoutingModule, ReactiveFormsModule],
   exports: [
@@ -27,6 +29,7 @@ import { ImageRenderPipe } from './pipes/ImageRender/image-render.pipe';
     SafeUrlPipe,
     StreamCardComponent,
     ImageRenderPipe,
+    SliceStringPipe,
   ],
 })
 export class SharedModule {}

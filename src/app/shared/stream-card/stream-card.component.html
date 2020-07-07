@@ -1,6 +1,6 @@
 <section class="stream-card">
   <img [src]="image | imageRender" alt="" />
-  <p>{{ title }}</p>
-  <p>{{ name }}</p>
-  <p>{{ viewers }}</p>
+  <p>Title: {{ title | sliceString: 35 }}</p>
+  <p>Name: {{ name }}</p>
+  <p>Viewers: {{ viewers }}</p>
 </section>

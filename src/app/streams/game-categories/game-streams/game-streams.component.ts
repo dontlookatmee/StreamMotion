@@ -25,7 +25,6 @@ export class GameStreamsComponent implements OnInit {
       .fetchGameStreams(id, '100')
       .subscribe((streams: StreamsMetadata) => {
         this.streamers = streams;
-        console.log(this.streamers);
       });
   }
 

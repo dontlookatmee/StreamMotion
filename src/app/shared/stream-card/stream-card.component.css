@@ -2,3 +2,7 @@ img {
   width: 100%;
   height: 200px;
 }
+p {
+  color: #fff;
+  margin-bottom: 5px;
+}
